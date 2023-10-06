@@ -10,9 +10,5 @@ export default function Post() {
     return "Loading";
   }
 
-  return (
-    <ul>
-      <li>{post.title}</li>
-    </ul>
-  );
+  return <>{post.title}</>;
 }

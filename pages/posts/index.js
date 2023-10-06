@@ -1,5 +1,6 @@
 import useSWR from "swr";
 import Link from "next/link";
+import { List, ListItem } from "..";
 
 export default function Page() {
   const { data, isLoading } = useSWR("/api/posts");
@@ -10,12 +11,12 @@ export default function Page() {
   }
 
   return (
-    <ul>
+    <List>
       {posts.map((post) => (
-        <li key={post._id}>
+        <ListItem key={post._id}>
           <Link href={`/posts/${post._id}`}>{post.title}</Link>
-        </li>
+        </ListItem>
       ))}
-    </ul>
+    </List>
   );
 }
