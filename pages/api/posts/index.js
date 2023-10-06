@@ -1,13 +1,14 @@
-import connect from "@/db/connect";
-import Posts from "@/db/models/Posts";
+import dbConnect from "@/db/connect";
+import Post from "@/db/models/Posts";
 
 export default async function handler(request, response) {
   await dbConnect();
+
   if (request.method === "GET") {
-    const posts = await Posts.find();
-    console.log(posts);
-    response.status(200).json(posts);
-    return;
+    const posts = await Post.find();
+    console.log(posts, "in backend");
+    return response.status(200).json(posts);
   }
+
   response.status(405).json({ message: "Method not allowed" });
 }
