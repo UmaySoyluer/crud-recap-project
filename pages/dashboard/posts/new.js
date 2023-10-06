@@ -11,7 +11,7 @@ export default function AddNewPostForm() {
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData);
 
-    const response = await fetch("/api/posts", {
+    const response = await fetch("/api/posts/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -30,6 +30,7 @@ export default function AddNewPostForm() {
       <form onSubmit={handleSubmit}>
         <label htmlFor="title">Title</label>
         <input name="title" placeholder="Add a new post title" />
+        <button type="submit">Submit</button>
       </form>
     </>
   );

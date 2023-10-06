@@ -18,10 +18,9 @@ export default function Dashboard() {
       <List role="list">
         {data.map((post) => {
           return (
-            <>
-              <ListItem key={post._id}>{post.title}</ListItem>
-              <button type="button">Edit Post</button>
-            </>
+            <ListItem key={post._id}>
+              {post.title} <button type="button">Edit Post</button>
+            </ListItem>
           );
         })}
       </List>
