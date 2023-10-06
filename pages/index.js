@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import styled from "styled-components";
 
-const List = styled.ul`
+export const List = styled.ul`
   list-style: none;
   display: flex;
   flex-direction: column;
@@ -10,17 +10,20 @@ const List = styled.ul`
   padding-left: 0;
 `;
 
-const ListItem = styled.li`
+export const ListItem = styled.li`
   position: relative;
   width: 100%;
 `;
 
 export default function HomePage() {
   const { data, error, isLoading } = useSWR("/api/posts");
-  console.log(data);
 
   if (isLoading) {
     return <h1>Loading...</h1>;
+  }
+
+  if (error) {
+    return <h1>Something went wrong {error.message}</h1>;
   }
 
   return (
