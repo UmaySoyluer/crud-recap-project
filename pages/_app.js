@@ -1,4 +1,4 @@
-import useSWR, { SWRConfig } from "swr";
+import { SWRConfig } from "swr";
 import GlobalStyle from "../styles";
 import fetcher from "@/lib/fetcher";
 
