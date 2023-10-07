@@ -6,8 +6,16 @@ export default async function handler(request, response) {
 
   if (request.method === "GET") {
     const posts = await Post.find();
-    console.log(posts, "in backend");
-    return response.status(200).json(posts);
+    response.status(200).json(posts);
+  }
+
+  if (request.method === "POST") {
+    try {
+      const post = await Post.create(request.body);
+      response.status(200).json(post);
+    } catch (error) {
+      response.status(400).json({ message: error.message });
+    }
   }
 
   response.status(405).json({ message: "Method not allowed" });
